@@ -32,7 +32,7 @@ function Body() {
         stress: storedStress
     };
 
-    fetch('http://localhost:5000/send_data', {
+    fetch('http://localhost:3000/send_data', {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json',

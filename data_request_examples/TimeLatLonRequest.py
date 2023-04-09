@@ -140,6 +140,7 @@ class moods:
         print(playlist_url)
         return playlist_url
 playlist_url = ""
+
 class moodEval:
 
     url = "https://api.wx.spire.com/forecast/route"
