@@ -13,8 +13,13 @@ if os.path.exists(cache_path):
 scope = 'playlist-modify-public'
 auth_manager = SpotifyOAuth(client_id=client_id, client_secret=client_secret, redirect_uri=client_uri, scope=scope, cache_path=None, show_dialog=True)
 sp = spotipy.Spotify(auth_manager=auth_manager)
-
-user = sp.current_user()['id']
+try:
+    user = sp.current_user()['id']
+except spotipy.SpotifyException as e:
+    if e.http_status == 401:
+        print('User is not logged in or authorized')
+    else:
+        raise e
 
 # Define playlist categories
 high_energy_music = ['techno', 'house', 'hip hop', 'metal', 'rock']
