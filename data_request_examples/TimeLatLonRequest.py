@@ -18,14 +18,14 @@ url = "https://api.wx.spire.com/forecast/route"
 today = date.today()
 now = datetime.now()
 dt_string = now.strftime("%H:%M:%S")
-input = str(today) + "T" + str(dt_string)
+input1 = str(today) + "T" + str(dt_string)
 
 payload = json.dumps(
     {
         "route": {
             "name": "my_example_route",
             "waypoints": [
-                {"time": input, "lat": 60, "lon": 60},
+                {"time": input1, "lat": 60, "lon": 60},
             ],
         },
         "bundles": "basic,maritime",
@@ -35,5 +35,27 @@ headers = {
     "spire-api-key": "DaVrozYhAZbbVJVb37AccvH8PjucQXTe",
     "Content-Type": "application/json",
 }
-response = requests.request("POST", url, headers=headers, data=payload)
-print(response.text)
+response1 = requests.request("POST", url, headers=headers, data=payload)
+# print(response.text)
+
+x = input()
+zip = str(x)
+response = requests.get('https://thezipcodes.com/api/v1/search?zipCode=' + zip + '&countryCode=US&apiKey=ded7388190c42055780b299ec6c41b14')
+json_string = response.text
+
+latIndex = json_string.find("latitude") + 11
+latitude = ""
+while(json_string[latIndex] != '"'):
+    latitude += json_string[latIndex]
+    latIndex += 1
+
+
+longIndex = json_string.find("longitude")  + 12
+longitude = ""
+while(json_string[longIndex] != '"'):
+    longitude += json_string[longIndex]
+    longIndex += 1
+
+print(latitude, longitude) 
+
+
