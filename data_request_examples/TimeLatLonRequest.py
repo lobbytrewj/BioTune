@@ -18,6 +18,10 @@ from spotipy.oauth2 import SpotifyClientCredentials, SpotifyOAuth
 import random
 
 class moods:
+    
+    '''def getPlaylist():
+        return playlist_url'''
+    
     client_id = '6bae4451c248407d84e5808925840377'
     client_secret = '8d400f2e23ef4a27931e680fd9493db4'
     client_uri = 'http://localhost:8080/callback'
@@ -58,6 +62,7 @@ class moods:
         sp.user_playlist_add_tracks(user, playlist_id=playlist['id'], tracks=track_results)
         playlist_url = playlist['external_urls']['spotify']
         print(playlist_url)
+        return playlist_url
 
     @staticmethod
     def relaxationPlaylist():
@@ -82,6 +87,7 @@ class moods:
         sp.user_playlist_add_tracks(user, playlist_id=playlist['id'], tracks=track_results)
         playlist_url = playlist['external_urls']['spotify']
         print(playlist_url)
+        return playlist_url
 
     @staticmethod
     def hypePlaylist():
@@ -106,6 +112,7 @@ class moods:
         sp.user_playlist_add_tracks(user, playlist_id=playlist['id'], tracks=track_results)
         playlist_url = playlist['external_urls']['spotify']
         print(playlist_url)
+        return playlist_url
 
     @staticmethod
     def depressedPlaylist():
@@ -131,6 +138,7 @@ class moods:
         
         playlist_url = playlist['external_urls']['spotify']
         print(playlist_url)
+        return playlist_url
 
 url = "https://api.wx.spire.com/forecast/route"
 today = date.today()
@@ -138,9 +146,11 @@ now = datetime.now()
 dt_string = now.strftime("%H:%M:%S")
 input1 = str(today) + "T" + str(dt_string)
 
-x = input()
-zip = str(x)
-response = requests.get('https://thezipcodes.com/api/v1/search?zipCode=' + zip + '&countryCode=US&apiKey=ded7388190c42055780b299ec6c41b14')
+
+zip = 95014
+def setZip(code):
+    zip = code
+response = requests.get('https://thezipcodes.com/api/v1/search?zipCode=' + str(zip) + '&countryCode=US&apiKey=ded7388190c42055780b299ec6c41b14')
 json_string = response.text
 
 latIndex = json_string.find("latitude") + 11
@@ -217,8 +227,14 @@ relative_humidity = float(relative_humidity)
 # print("humidity:",relative_humidity)
 
 sleep = 4
+def setSleep(sleepGood):
+    sleep = sleepGood
 health = 1
+def setHealth(goodHealth):
+    health = goodHealth
 nostress = 4
+def setNostress(stress):
+    nostress = stress
 celsius = air_temperature - 273.15
 print("total cloud cover " + str(total_cloud_cover))
 
@@ -259,23 +275,26 @@ print("Your BioMood after rain is " + str(moodS))
 moodS *= 100
 moodE *= 100
 print("Energy mood is " + str(moodE) + " and sadness mood is " + str(moodS))
+playlist_url = ""
 if (moodE > 50): 
     if (moodE > 70): 
         #hype
-        moods.hypePlaylist()
+        playlist_url = moods.hypePlaylist()
     else:
         #happy
-        moods.happyPlaylist()
+        playlist_url = moods.happyPlaylist()
 else:
     if (moodE > 20):
         #relaxed
-        moods.relaxationPlaylist()
+        playlist_url = moods.relaxationPlaylist()
         temp = ""
     else:
         #depressed
-        moods.depressedPlaylist()
+        playlist_url = moods.depressedPlaylist()
         temp = ""
-
+@staticmethod
+def getPlaylistUrl():
+    return playlist_url
 
 '''
 print("celsius temp " + str(celsius))
