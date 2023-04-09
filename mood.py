@@ -3,9 +3,13 @@ from spotipy.oauth2 import SpotifyClientCredentials, SpotifyOAuth
 
 client_id = '6bae4451c248407d84e5808925840377'
 client_secret = '8d400f2e23ef4a27931e680fd9493db4'
-client_credentials_manager = SpotifyClientCredentials(client_id=client_id, client_secret=client_secret)
-sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
+client_uri = 'http://localhost:8080/callback'
 
+scope = 'playlist-modify-public'
+auth_manager = SpotifyOAuth(client_id=client_id, client_secret=client_secret, redirect_uri=client_uri, scope=scope)
+sp = spotipy.Spotify(auth_manager=auth_manager)
+
+user = sp.current_user()['id']
 
 # Define playlist categories
 high_energy_music = ['techno', 'house', 'hip hop', 'metal', 'rock']
@@ -22,9 +26,8 @@ if playlist_category == 'high energy':
         results = sp.search(q='genre:' + genre, type='track', limit=5)
         for track in results['tracks']['items']:
             track_results.append(track['uri'])
-    user = input('Your Username: ')
-    sp.user_playlist_create(user, name='High Energy Playlist', public=True, description='Playlist of high energy music')
-    sp.user_playlist_add_tracks(user, playlist_id='your_playlist_id', tracks=track_results)
+    playlist = sp.user_playlist_create(user, name='High Energy Playlist', public=True, description='Playlist of high energy music')
+    sp.user_playlist_add_tracks(user, playlist_id=playlist['id'], tracks=track_results)
 
 elif playlist_category == 'low energy':
     track_results = []
@@ -32,9 +35,8 @@ elif playlist_category == 'low energy':
         results = sp.search(q='genre:' + genre, type='track', limit=5)
         for track in results['tracks']['items']:
             track_results.append(track['uri'])
-    user = input('Your Username: ')
-    sp.user_playlist_create(user, name='Low Energy Playlist', public=True, description='Playlist of low energy music')
-    sp.user_playlist_add_tracks(user, playlist_id='your_playlist_id', tracks=track_results)
+    playlist = sp.user_playlist_create(user, name='Low Energy Playlist', public=True, description='Playlist of low energy music')
+    sp.user_playlist_add_tracks(user, playlist_id=playlist['id'], tracks=track_results)
 
 elif playlist_category == 'exciting':
     track_results = []
@@ -42,9 +44,8 @@ elif playlist_category == 'exciting':
         results = sp.search(q='genre:' + genre, type='track', limit=5)
         for track in results['tracks']['items']:
             track_results.append(track['uri'])
-    user = input('Your Username: ')
-    sp.user_playlist_create(user, name='Exciting Playlist', public=True, description='Playlist of exciting music')
-    sp.user_playlist_add_tracks(user, playlist_id='your_playlist_id', tracks=track_results)
+    playlist = sp.user_playlist_create(user, name='Exciting Playlist', public=True, description='Playlist of exciting music')
+    sp.user_playlist_add_tracks(user, playlist_id=playlist['id'], tracks=track_results)
 
 else:
     print('Invalid playlist category')
