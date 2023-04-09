@@ -216,9 +216,9 @@ relative_humidity = float(relative_humidity)
 # print("Cloud cover:", total_cloud_cover)
 # print("humidity:",relative_humidity)
 
-sleep = 1
-health = 4
-nostress = 1
+sleep = 4
+health = 1
+nostress = 4
 celsius = air_temperature - 273.15
 print("total cloud cover " + str(total_cloud_cover))
 
@@ -259,15 +259,15 @@ print("Your BioMood after rain is " + str(moodS))
 moodS *= 100
 moodE *= 100
 print("Energy mood is " + str(moodE) + " and sadness mood is " + str(moodS))
-if (moodE > 70): 
-    if (moodE > 90): 
+if (moodE > 50): 
+    if (moodE > 70): 
         #hype
         moods.hypePlaylist()
     else:
         #happy
         moods.happyPlaylist()
 else:
-    if (moodE > 55):
+    if (moodE > 20):
         #relaxed
         moods.relaxationPlaylist()
         temp = ""
