@@ -5,12 +5,12 @@ import Container from 'react-bootstrap/Container';
 
 
 
-function Navigation() {
+function Navigation1() {
     return (
-      <Navbar bg="light" expand="lg">
+        <Navbar bg="light" expand="lg">
           <Container>
             <Navbar.Brand href="#home">MoodTunes</Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            {/* <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
                 <Nav.Link href="#home">Home</Nav.Link>
@@ -27,15 +27,10 @@ function Navigation() {
                   </NavDropdown.Item>
                 </NavDropdown>
               </Nav>
-            </Navbar.Collapse>
+            </Navbar.Collapse> */}
           </Container>
-        </Navbar>
-
-
-
-
-
+        </Navbar>  
     );
   }
   
-  export default Navigation;
+  export default Navigation1;
