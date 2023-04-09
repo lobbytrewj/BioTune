@@ -21,6 +21,7 @@ def read_barcodes(camera):
         barcodes = decode(gray)
         # Loop over detected barcodes
         for barcode in barcodes:
+            print("barcode found")
             # Extract the barcode data as a byte string
             barcode_data = barcode.data.decode("utf-8")
             # Split the barcode data into product name and manufacturer
