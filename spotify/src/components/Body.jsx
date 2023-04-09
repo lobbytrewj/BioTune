@@ -24,23 +24,35 @@ function Body() {
   const onSelectStress = (value) => {
     setStoredStress(value);
   };
+  const sendData = async () => {
+    const data = {
+        age: storedAge, 
+        health: storedHealth, 
+        sleep: storedSleep,
+        stress: storedStress
+    };
 
-  /*const handleSubmit = () => {
-    axios.post('/api/moodtunes', {
-      age: storedAge,
-      sleep: storedSleep,
-      health: storedHealth,
-      stress: storedStress
+    fetch('http://localhost:5000/send_data', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+          'Accept': '*/*',
+					'Connection': 'keep-alive',
+					'Access-Control-Allow-Origin': '*',
+					'Access-Control-Allow-Headers': '*',
+					'Access-Control-Allow-Credentials': true,
+      },
+      body: JSON.stringify(data),
     })
-    .then((response) => {
-      console.log(response.data);
-      // handle the response from the backend here
-    })
-    .catch((error) => {
-      console.log(error);
-      // handle the error here
-    });
-  }*/
+      .then((response) => response.json()
+      .then((data) => {
+          console.log('Data sent successfully:', data);
+      })
+      .catch((error) => {
+          console.error('Error sending data:', error);
+      }));
+  }
+
   return (
     <>
       <br/><br/>
@@ -214,7 +226,7 @@ function Body() {
         </Dropdown>
       )}
       <br/><br/>
-      <button type="button" className="btn btn-primary">
+      <button type="button" className="btn btn-primary" onClick={sendData}>
         Submit
       </button>
     </>
