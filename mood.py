@@ -12,46 +12,58 @@ if os.path.exists(cache_path):
 
 scope = 'playlist-modify-public'
 auth_manager = SpotifyOAuth(client_id=client_id, client_secret=client_secret, redirect_uri=client_uri, scope=scope, cache_path=None, show_dialog=True)
-sp = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=scope))
+sp = spotipy.Spotify(auth_manager=auth_manager)
+
 user = sp.current_user()['id']
 
 # Define playlist categories
 high_energy_music = ['techno', 'house', 'hip hop', 'metal', 'rock']
-low_energy_music = ['jazz', 'blues', 'classical', 'instrumental', 'ambient']
+low_energy_music = ['blues', 'classical', 'instrumental']
 exciting_music = ['pop', 'dance', 'r&b', 'reggae', 'latin']
+depressed_music = ['r&b', 'ambient', 'jazz']
 
 # Ask user for input
-playlist_category = input('Please select a playlist category - high energy, low energy, or exciting: ')
+playlist_category = input('Please select a playlist category - happy, relaxation, hype or depressed: ')
 
 # Create playlist based on user input
-if playlist_category == 'high energy':
+if playlist_category == 'happy':
     track_results = []
     for genre in high_energy_music:
         offset = random.randint(0, 100)
         results = sp.search(q='genre:' + genre, type='track', limit=5, offset=offset)
         for track in results['tracks']['items']:
             track_results.append(track['uri'])
-    playlist = sp.user_playlist_create(user, name='High Energy Playlist', public=True, description='Playlist of high energy music')
+    playlist = sp.user_playlist_create(user, name='Happy', public=True, description='Playlist of happiness')
     sp.user_playlist_add_tracks(user, playlist_id=playlist['id'], tracks=track_results)
 
-elif playlist_category == 'low energy':
+elif playlist_category == 'relaxation':
     track_results = []
     for genre in low_energy_music:
         offset = random.randint(0, 100)
         results = sp.search(q='genre:' + genre, type='track', limit=5, offset=offset)
         for track in results['tracks']['items']:
             track_results.append(track['uri'])
-    playlist = sp.user_playlist_create(user, name='Low Energy Playlist', public=True, description='Playlist of low energy music')
+    playlist = sp.user_playlist_create(user, name='Relaxation', public=True, description='Playlist of relaxation')
     sp.user_playlist_add_tracks(user, playlist_id=playlist['id'], tracks=track_results)
 
-elif playlist_category == 'exciting':
+elif playlist_category == 'hype':
     track_results = []
     for genre in exciting_music:
         offset = random.randint(0, 100)
         results = sp.search(q='genre:' + genre, type='track', limit=5, offset=offset)
         for track in results['tracks']['items']:
             track_results.append(track['uri'])
-    playlist = sp.user_playlist_create(user, name='Exciting Playlist', public=True, description='Playlist of exciting music')
+    playlist = sp.user_playlist_create(user, name='Hype', public=True, description='Playlist of hype music')
+    sp.user_playlist_add_tracks(user, playlist_id=playlist['id'], tracks=track_results)
+
+elif playlist_category == 'depressed':
+    track_results = []
+    for genre in depressed_music:
+        offset = random.randint(0, 100)
+        results = sp.search(q='genre:' + genre, type='track', limit=5, offset=offset)
+        for track in results['tracks']['items']:
+            track_results.append(track['uri'])
+    playlist = sp.user_playlist_create(user, name='Depressed', public=True, description='Playlist of depressing music')
     sp.user_playlist_add_tracks(user, playlist_id=playlist['id'], tracks=track_results)
 
 else:
