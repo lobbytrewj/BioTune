@@ -4,13 +4,18 @@ import Button from 'react-bootstrap/Button';
 //import axios from 'axios';
 
 function Body() {
-  const [storedAge, setStoredAge] = useState('');
+  const [inputValue, setInputValue] = useState('');
   const [storedHealth, setStoredHealth] = useState('');
   const [storedSleep, setStoredSleep] = useState('');
   const [storedStress, setStoredStress] = useState('');
 
-  const onSelectAge = (value) => {
-    setStoredAge(value);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log('Input value:', inputValue);
+  };
+
+  const handleChange = (event) => {
+    setInputValue(event.target.value);
   };
 
   const onSelectSleep = (value) => {
@@ -26,21 +31,16 @@ function Body() {
   };
   const sendData = async () => {
     const data = {
-        age: storedAge, 
+        ip: inputValue,
         health: storedHealth, 
         sleep: storedSleep,
         stress: storedStress
     };
 
-    fetch('http://localhost:3000/send_data', {
+    await fetch('http://localhost:3000/send_data', {
       method: 'POST',
       headers: {
-          'Content-Type': 'application/json',
-          'Accept': '*/*',
-					'Connection': 'keep-alive',
-					'Access-Control-Allow-Origin': '*',
-					'Access-Control-Allow-Headers': '*',
-					'Access-Control-Allow-Credentials': true,
+          "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
     })
@@ -55,44 +55,15 @@ function Body() {
 
   return (
     <>
-      <br/><br/>
-      {storedAge ? (
-        <Dropdown>
-          <Dropdown.Toggle variant="success" id="dropdown-basic">
-            {`You selected age: ${storedAge}`}
-          </Dropdown.Toggle>
-
-          <Dropdown.Menu>
-            <Dropdown.Item href="#/action-1" onClick={() => onSelectAge('Under 10')}>
-              Under 10
-            </Dropdown.Item>
-            <Dropdown.Item href="#/action-2" onClick={() => onSelectAge('10 - 20')}>
-              10 - 20
-            </Dropdown.Item>
-            <Dropdown.Item href="#/action-3" onClick={() => onSelectAge('20+')}>
-              20+
-            </Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
-      ) : (
-        <Dropdown>
-          <Dropdown.Toggle variant="success" id="dropdown-basic">
-            What is your Age
-          </Dropdown.Toggle>
-
-          <Dropdown.Menu>
-            <Dropdown.Item href="#/action-1" onClick={() => onSelectAge('Under 10')}>
-              Under 10
-            </Dropdown.Item>
-            <Dropdown.Item href="#/action-2" onClick={() => onSelectAge('10 - 20')}>
-              10 - 20
-            </Dropdown.Item>
-            <Dropdown.Item href="#/action-3" onClick={() => onSelectAge('20+')}>
-              20+
-            </Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
-      )}
+      <div>
+        <form onSubmit={handleSubmit}>
+          <label>
+            Insert Zipcode
+            <input type="text" value={inputValue} onChange={handleChange} />
+          </label>
+          <button type="Save">Save</button>
+        </form>
+      </div>
       <br/><br/>
       {storedSleep ? (
         <Dropdown>
