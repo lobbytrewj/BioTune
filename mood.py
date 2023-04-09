@@ -1,16 +1,12 @@
 import spotipy
-import os
 from spotipy.oauth2 import SpotifyClientCredentials, SpotifyOAuth
 import random
 
 client_id = '6bae4451c248407d84e5808925840377'
 client_secret = '8d400f2e23ef4a27931e680fd9493db4'
 client_uri = 'http://localhost:8080/callback'
-cache_path = ".cache"
-if os.path.exists(cache_path):
-    os.remove(cache_path)
 
-scope = 'playlist-modify-public'
+scope = 'user-library-read playlist-modify-public'
 auth_manager = SpotifyOAuth(client_id=client_id, client_secret=client_secret, redirect_uri=client_uri, scope=scope, cache_path=None, show_dialog=True)
 sp = spotipy.Spotify(auth_manager=auth_manager)
 
@@ -20,7 +16,7 @@ user = sp.current_user()['id']
 high_energy_music = ['techno', 'house', 'hip hop', 'metal', 'rock']
 low_energy_music = ['blues', 'classical', 'instrumental']
 exciting_music = ['pop', 'dance', 'r&b', 'reggae', 'latin']
-depressed_music = ['r&b', 'ambient', 'jazz']
+depressed_music = ['r&b', 'ambient', ]
 
 # Ask user for input
 playlist_category = input('Please select a playlist category - happy, relaxation, hype or depressed: ')
@@ -68,3 +64,6 @@ elif playlist_category == 'depressed':
 
 else:
     print('Invalid playlist category')
+    
+playlist_url = playlist['external_urls']['spotify']
+print(playlist_url)
