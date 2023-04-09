@@ -11,14 +11,21 @@
 
 import requests
 import json
+from datetime import date
+from datetime import datetime
 
 url = "https://api.wx.spire.com/forecast/route"
+today = date.today()
+now = datetime.now()
+dt_string = now.strftime("%H:%M:%S")
+input = str(today) + "T" + str(dt_string)
+
 payload = json.dumps(
     {
         "route": {
             "name": "my_example_route",
             "waypoints": [
-                {"time": "2023-04-8T12:00:00", "lat": 40.526101, "lon": -74.039306},
+                {"time": input, "lat": 60, "lon": 60},
             ],
         },
         "bundles": "basic,maritime",
