@@ -7,7 +7,8 @@ from selenium.webdriver.common.keys import Keys
 # Define a function to read barcodes from a video stream
 def read_barcodes(camera):
     # Initialize video capture object for the camera
-    cap = cv2.VideoCapture(int(camera), cv2.CAP_DSHOW)
+    cap = cv2.VideoCapture(camera)
+    print("Camera found")
     # Initialize web driver for Amazon search
     driver = webdriver.Chrome()
     driver.get("https://www.amazon.com/")
