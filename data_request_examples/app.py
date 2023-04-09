@@ -1,6 +1,7 @@
 from flask import Flask, jsonify
 from flask_cors import CORS
 from TimeLatLonRequest import TimeLatLonRequest
+import your_existing_script as your_script
 
 
 app = Flask(__name__)
