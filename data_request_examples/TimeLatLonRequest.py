@@ -33,6 +33,8 @@ class moods:
     low_energy_music = ['blues', 'classical', 'instrumental']
     exciting_music = ['pop', 'dance', 'r&b', 'reggae', 'latin']
     depressed_music = ['r&b', 'ambient', ]
+
+
     @staticmethod
     def happyPlaylist():
         track_results = []
@@ -214,16 +216,16 @@ relative_humidity = float(relative_humidity)
 # print("Cloud cover:", total_cloud_cover)
 # print("humidity:",relative_humidity)
 
-sleep = 4
-health = 1
-nostress = 4
+sleep = 1
+health = 4
+nostress = 1
 celsius = air_temperature - 273.15
 print("total cloud cover " + str(total_cloud_cover))
 
 moodE = 0
 moodE += sleep * -0.007
 print("Your BioMood after sleep is " + str(moodE))
-moodE += health * 0.135
+moodE += health * -0.135
 print("Your BioMood after health is " + str(moodE))
 moodE += nostress * 0.177
 print("Your BioMood after nostress is " + str(moodE))
@@ -257,22 +259,21 @@ print("Your BioMood after rain is " + str(moodS))
 moodS *= 100
 moodE *= 100
 print("Energy mood is " + str(moodE) + " and sadness mood is " + str(moodS))
-if (moodE - moodS >= 0): 
-    if (moodE - moodS > 10): 
+if (moodE > 70): 
+    if (moodE > 90): 
         #hype
         moods.hypePlaylist()
     else:
         #happy
-        moods.happyPlaylist
-        temp = ""
+        moods.happyPlaylist()
 else:
-    if (moodS - moodE > 5):
+    if (moodE > 55):
         #relaxed
-        moods.relaxationPlaylist
+        moods.relaxationPlaylist()
         temp = ""
     else:
         #depressed
-        moods.depressedPlaylist
+        moods.depressedPlaylist()
         temp = ""
 
 
