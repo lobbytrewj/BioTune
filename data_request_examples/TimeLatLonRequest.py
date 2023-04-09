@@ -84,11 +84,13 @@ while(spire_string[humidityIndex] != ','):
     relative_humidity += spire_string[humidityIndex]
     humidityIndex += 1
 
-print(response1.text)
-print("Wind speed:",wind_speed)
-print("temperature:", air_temperature)
-print("precipitation:", precipitation_rate)
-print("Cloud cover:", total_cloud_cover)
-print("humidity:",relative_humidity)
+# print(response1.text)
+# print("Wind speed:",wind_speed)
+# print("temperature:", air_temperature)
+# print("precipitation:", precipitation_rate)
+# print("Cloud cover:", total_cloud_cover)
+# print("humidity:",relative_humidity)
 
 
+airTempF = (1.8 * (float(air_temperature)-273.15)) + 32
+print(airTempF)
