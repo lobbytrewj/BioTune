@@ -20,24 +20,6 @@ now = datetime.now()
 dt_string = now.strftime("%H:%M:%S")
 input1 = str(today) + "T" + str(dt_string)
 
-payload = json.dumps(
-    {
-        "route": {
-            "name": "my_example_route",
-            "waypoints": [
-                {"time": input1, "lat": 60, "lon": 60},
-            ],
-        },
-        "bundles": "basic,maritime",
-    }
-)
-headers = {
-    "spire-api-key": "DaVrozYhAZbbVJVb37AccvH8PjucQXTe",
-    "Content-Type": "application/json",
-}
-response1 = requests.request("POST", url, headers=headers, data=payload)
-# print(response.text)
-
 x = input()
 zip = str(x)
 response = requests.get('https://thezipcodes.com/api/v1/search?zipCode=' + zip + '&countryCode=US&apiKey=ded7388190c42055780b299ec6c41b14')
@@ -57,5 +39,56 @@ while(json_string[longIndex] != '"'):
     longIndex += 1
 
 print(latitude, longitude) 
+print(input1)
+
+payload = json.dumps(
+    {
+        "route": {
+            "name": "my_example_route",
+            "waypoints": [
+                {"time": input1, "lat": latitude, "lon": longitude},
+            ],
+        },
+        "bundles": "basic,maritime",
+    }
+)
+headers = {
+    "spire-api-key": "DaVrozYhAZbbVJVb37AccvH8PjucQXTe",
+    "Content-Type": "application/json",
+}
+response1 = requests.request("POST", url, headers=headers, data=payload)
+spire_string = response1.text
+windSpeedIndex = spire_string.find("wind_speed") + 12
+temperatureIndex = spire_string.find("air_temperature") + 17
+precipiationIndex = spire_string.find("precipitation_rate") + 20
+cloudCoverIndex = spire_string.find("total_cloud_cover") + 19
+humidityIndex = spire_string.find("relative_humidity") + 19
+wind_speed = ""
+air_temperature = ""
+precipitation_rate = ""
+total_cloud_cover = ""
+relative_humidity = ""
+while(spire_string[windSpeedIndex] != '}'):
+    wind_speed += spire_string[windSpeedIndex]
+    windSpeedIndex += 1
+while(spire_string[temperatureIndex] != ','):
+    air_temperature += spire_string[temperatureIndex]
+    temperatureIndex += 1
+while(spire_string[precipiationIndex] != ','):
+    precipitation_rate += spire_string[precipiationIndex]
+    precipiationIndex += 1
+while(spire_string[cloudCoverIndex] != ','):
+    total_cloud_cover += spire_string[cloudCoverIndex]
+    cloudCoverIndex += 1
+while(spire_string[humidityIndex] != ','):
+    relative_humidity += spire_string[humidityIndex]
+    humidityIndex += 1
+
+print(response1.text)
+print("Wind speed:",wind_speed)
+print("temperature:", air_temperature)
+print("precipitation:", precipitation_rate)
+print("Cloud cover:", total_cloud_cover)
+print("humidity:",relative_humidity)
 
 
