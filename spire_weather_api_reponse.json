@@ -1,0 +1,194 @@
+{
+    "data": [
+        {
+            "location": {
+                "coordinates": {
+                    "lat": 40.526101,
+                    "lon": -74.039306,
+                    "elevation": 1.9
+                }
+            },
+            "times": {
+                "issuance_time": "2023-03-17T00:00:00+00:00",
+                "valid_time": "2023-03-20T12:00:00+00:00",
+                "requested_valid_time": "2023-03-20T12:00:00+00:00"
+            },
+            "values": {
+                "air_pressure_at_sea_level": 102618.9,
+                "air_temperature": 275.3,
+                "dew_point_temperature": 267.4,
+                "eastward_sea_water_velocity": 0.1,
+                "eastward_wind": 6.7,
+                "northward_sea_water_velocity": 0.1,
+                "northward_wind": 0.4,
+                "precipitation_rate": 0.0,
+                "relative_humidity": 56.0,
+                "sea_surface_temperature": 278.6,
+                "sea_surface_wave_mean_direction": 229.0,
+                "sea_surface_wave_mean_period": 4.1,
+                "sea_surface_wave_significant_height": 0.3,
+                "sea_water_direction": 225.0,
+                "sea_water_practical_salinity": 33.07986080646515,
+                "sea_water_speed": 0.1,
+                "surface_visibility": 24134.9,
+                "total_cloud_cover": 0.0,
+                "wind_direction": 267.0,
+                "wind_gust": 8.2,
+                "wind_speed": 6.7
+            }
+        },
+        {
+            "location": {
+                "coordinates": {
+                    "lat": 39.97322,
+                    "lon": -71.954218,
+                    "elevation": 0.0
+                }
+            },
+            "times": {
+                "issuance_time": "2023-03-17T00:00:00+00:00",
+                "valid_time": "2023-03-21T12:00:00+00:00",
+                "requested_valid_time": "2023-03-21T12:00:00+00:00"
+            },
+            "values": {
+                "air_pressure_at_sea_level": 103090.6,
+                "air_temperature": 280.2,
+                "dew_point_temperature": 275.2,
+                "eastward_sea_water_velocity": 0.1,
+                "eastward_wind": -4.1,
+                "northward_sea_water_velocity": 0.0,
+                "northward_wind": -2.1,
+                "precipitation_rate": 0.0,
+                "relative_humidity": 71.0,
+                "sea_surface_temperature": 280.7,
+                "sea_surface_wave_mean_direction": 212.0,
+                "sea_surface_wave_mean_period": 5.6,
+                "sea_surface_wave_significant_height": 0.8,
+                "sea_water_direction": 270.0,
+                "sea_water_practical_salinity": 33.5717568397522,
+                "sea_water_speed": 0.1,
+                "surface_visibility": 24134.9,
+                "total_cloud_cover": 0.0,
+                "wind_direction": 63.0,
+                "wind_gust": 4.7,
+                "wind_speed": 4.6
+            }
+        },
+        {
+            "location": {
+                "coordinates": {
+                    "lat": 39.485893,
+                    "lon": -66.749471,
+                    "elevation": 0.0
+                }
+            },
+            "times": {
+                "issuance_time": "2023-03-17T00:00:00+00:00",
+                "valid_time": "2023-03-22T12:00:00+00:00",
+                "requested_valid_time": "2023-03-22T12:00:00+00:00"
+            },
+            "values": {
+                "air_pressure_at_sea_level": 103471.4,
+                "air_temperature": 281.7,
+                "dew_point_temperature": 273.9,
+                "eastward_sea_water_velocity": -0.2,
+                "eastward_wind": -0.0,
+                "northward_sea_water_velocity": 0.2,
+                "northward_wind": -4.7,
+                "precipitation_rate": 0.0,
+                "relative_humidity": 58.0,
+                "sea_surface_temperature": 288.5,
+                "sea_surface_wave_mean_direction": 7.0,
+                "sea_surface_wave_mean_period": 4.9,
+                "sea_surface_wave_significant_height": 0.8,
+                "sea_water_direction": 135.0,
+                "sea_water_practical_salinity": 35.629008412361145,
+                "sea_water_speed": 0.3,
+                "surface_visibility": 24135.1,
+                "total_cloud_cover": 0.0,
+                "wind_direction": 0.0,
+                "wind_gust": 5.0,
+                "wind_speed": 4.7
+            }
+        },
+        {
+            "location": {
+                "coordinates": {
+                    "lat": 37.434774,
+                    "lon": -53.753772,
+                    "elevation": 0.0
+                }
+            },
+            "times": {
+                "issuance_time": "2023-03-17T00:00:00+00:00",
+                "valid_time": "2023-03-23T12:00:00+00:00",
+                "requested_valid_time": "2023-03-23T12:00:00+00:00"
+            },
+            "values": {
+                "air_pressure_at_sea_level": 102772.5,
+                "air_temperature": 284.7,
+                "dew_point_temperature": 278.0,
+                "eastward_sea_water_velocity": -0.0,
+                "eastward_wind": 2.2,
+                "northward_sea_water_velocity": 0.0,
+                "northward_wind": -7.8,
+                "precipitation_rate": 0.01,
+                "relative_humidity": 63.0,
+                "sea_surface_temperature": 292.1,
+                "sea_surface_wave_mean_direction": 6.0,
+                "sea_surface_wave_mean_period": 10.4,
+                "sea_surface_wave_significant_height": 3.0,
+                "sea_water_direction": 180.0,
+                "sea_water_practical_salinity": 36.6146285533905,
+                "sea_water_speed": 0.0,
+                "surface_visibility": 24135.1,
+                "total_cloud_cover": 100.0,
+                "wind_direction": 344.0,
+                "wind_gust": 8.3,
+                "wind_speed": 8.1
+            }
+        },
+        {
+            "location": {
+                "coordinates": {
+                    "lat": 36.693392,
+                    "lon": -42.424287,
+                    "elevation": 0.0
+                }
+            },
+            "times": {
+                "issuance_time": "2023-03-17T00:00:00+00:00",
+                "valid_time": "2023-03-24T12:00:00+00:00",
+                "requested_valid_time": "2023-03-24T12:00:00+00:00"
+            },
+            "values": {
+                "air_pressure_at_sea_level": 102052.2,
+                "air_temperature": 286.7,
+                "dew_point_temperature": 281.2,
+                "eastward_sea_water_velocity": -0.0,
+                "eastward_wind": 11.2,
+                "northward_sea_water_velocity": -0.0,
+                "northward_wind": -4.3,
+                "precipitation_rate": 0.11,
+                "relative_humidity": 69.0,
+                "sea_surface_temperature": 291.2,
+                "sea_surface_wave_mean_direction": 347.0,
+                "sea_surface_wave_mean_period": 11.0,
+                "sea_surface_wave_significant_height": 3.9,
+                "sea_water_direction": 0.0,
+                "sea_water_practical_salinity": 36.42800974845886,
+                "sea_water_speed": 0.0,
+                "surface_visibility": 22448.3,
+                "total_cloud_cover": 59.0,
+                "wind_direction": 291.0,
+                "wind_gust": 13.2,
+                "wind_speed": 12.0
+            }
+        }
+    ],
+    "meta": {
+        "unit_system": "si",
+        "forecast": "Spire SOF-D Forecast",
+        "message": null
+    }
+}
